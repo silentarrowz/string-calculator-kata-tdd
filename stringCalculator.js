@@ -1,6 +1,10 @@
 function stringCalculator(str){
     const numArr = str.split(',');
-    return Number(numArr[0]||0)+Number(numArr[1]||0);
+    let total = 0;  
+    numArr.forEach((item)=>{
+        total = total+Number(item)
+    })
+    return total;
 }
 
 module.exports = stringCalculator;
