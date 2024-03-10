@@ -1,9 +1,41 @@
+
+function checkForCustom(str){
+    return (/^\/\//).test(str);
+}
+
+function getCustomDelimiter(str){
+    return str.charAt(2)
+}
+
+function stripLine(str){
+    let newString = str.substring(str.indexOf('\n')+1);
+    console.log('new string : ', newString);
+    return newString;
+}
 function stringCalculator(str){
-    const numArr = str.split(/[,\n]/ig); 
+    let delimiters = [',','\n'];
+    if(checkForCustom(str)){
+        let newDelimiter = getCustomDelimiter(str);
+        delimiters.push(newDelimiter);
+        str = stripLine(str);
+    }
+    
+    // console.log('delimit exp : ', delimitExp)
+    const numArr = str.split(new RegExp('[' + delimiters.join('') + ']', 'g')); 
+    console.log('num arr : ', numArr)
     let total = 0;  
+    const negatives = []
     numArr.forEach((item)=>{
+        if(Number(item)<0){
+            negatives.push(item)
+        }
         total = total+Number(item)
-    })
+    });
+    if(negatives.length>0){
+        let message = "negative numbers not allowed"+' '+ negatives.join(',');
+        throw new Error(message)
+    }
+    console.log('total : ',total)
     return total;
 }
 
