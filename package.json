@@ -4,7 +4,7 @@
   "description": "string calculator kata tdd",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
