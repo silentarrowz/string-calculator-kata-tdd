@@ -13,4 +13,7 @@ describe("string addition calculator test cases", () =>{
     test("addition of 5, 6, 7, 8 to equal 26", () => {
         expect(stringCalculator("5,6,7,8")).toBe(26);
     });
+    test("addition of '1\n2,3' to equal 6", () => {
+        expect(stringCalculator("1\n2,3")).toBe(6);
+    });
 });
