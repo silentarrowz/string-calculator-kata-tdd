@@ -4,7 +4,12 @@ function checkForCustom(str){
 }
 
 function getCustomDelimiter(str){
-    return str.charAt(2)
+    
+    let positionN = str.indexOf('\n');
+    let delimitLen = positionN-2;
+    let t = str.substring(2,2+delimitLen);
+    console.log('t : ', t);
+    return str.substring(2,2+delimitLen)
 }
 
 function stripLine(str){
@@ -19,9 +24,8 @@ function stringCalculator(str){
         delimiters.push(newDelimiter);
         str = stripLine(str);
     }
-    
-    // console.log('delimit exp : ', delimitExp)
-    const numArr = str.split(new RegExp('[' + delimiters.join('') + ']', 'g')); 
+    console.log('delimiters : ', delimiters)
+    const numArr = str.split(new RegExp('[' + delimiters.join('|') + ']', 'g')); 
     console.log('num arr : ', numArr)
     let total = 0;  
     const negatives = []

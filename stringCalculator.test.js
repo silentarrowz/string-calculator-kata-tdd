@@ -18,7 +18,10 @@ describe("string addition calculator test cases", () =>{
     });
     test("addition of '//;\n1;2' to equal 3", () => {
         expect(stringCalculator("//;\n1;2")).toBe(3);
-    });    
+    });   
+    test("addition of '//foo\n1foo2foo3' to equal 6", () => {
+        expect(stringCalculator("//foo\n1foo2foo3")).toBe(6);
+    });  
     test("should throw an error if called with  one or more -ve numbers", () => {
         expect(() => {
             stringCalculator("2,-5,3,-4");
