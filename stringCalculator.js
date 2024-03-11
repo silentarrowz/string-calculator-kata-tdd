@@ -7,14 +7,14 @@ function getCustomDelimiter(str){
     
     let positionN = str.indexOf('\n');
     let delimitLen = positionN-2;
-    let t = str.substring(2,2+delimitLen);
-    console.log('t : ', t);
-    return str.substring(2,2+delimitLen)
+    let customDelimiter = str.substring(2,2+delimitLen);
+    // console.log('t : ', t);
+    return customDelimiter
 }
 
 function stripLine(str){
     let newString = str.substring(str.indexOf('\n')+1);
-    console.log('new string : ', newString);
+    // console.log('new string : ', newString);
     return newString;
 }
 function stringCalculator(str){
@@ -24,9 +24,9 @@ function stringCalculator(str){
         delimiters.push(newDelimiter);
         str = stripLine(str);
     }
-    console.log('delimiters : ', delimiters)
+    // console.log('delimiters : ', delimiters)
     const numArr = str.split(new RegExp('[' + delimiters.join('|') + ']', 'g')); 
-    console.log('num arr : ', numArr)
+    // console.log('num arr : ', numArr)
     let total = 0;  
     const negatives = []
     numArr.forEach((item)=>{
@@ -39,7 +39,7 @@ function stringCalculator(str){
         let message = "negative numbers not allowed"+' '+ negatives.join(',');
         throw new Error(message)
     }
-    console.log('total : ',total)
+    // console.log('total : ',total)
     return total;
 }
 
